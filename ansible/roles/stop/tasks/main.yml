@@ -1,0 +1,4 @@
+---
+- include_tasks: copy_tools.yml
+
+- include_tasks: stop_containers.yml
