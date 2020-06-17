@@ -6,7 +6,7 @@
     action: "start_container"
     common_options: "{{ docker_common_options }}"
     detach: False
-    image: "{{ neutron_opencontrail_init_image_full }}"
+    image: "{{ neutron_opencontrail_init_image_full if (neutron_plugin_agent == 'opencontrail') else neutron_opencontrail_ml2_init_image_full }}"
     labels:
       BOOTSTRAP:
     environment:
@@ -15,6 +15,6 @@
     restart_policy: "never"
     volumes: "{{ neutron_server.volumes|reject('equalto', '')|list }}"
   when:
-    - neutron_plugin_agent == 'opencontrail'
+    - neutron_plugin_agent in ['opencontrail', 'opencontrail-ml2']
     - neutron_server.enabled | bool
     - neutron_server.host_in_groups | bool

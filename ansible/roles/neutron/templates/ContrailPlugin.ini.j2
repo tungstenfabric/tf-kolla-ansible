@@ -1,4 +1,4 @@
-{% if neutron_plugin_agent == 'opencontrail' %}
+{% if neutron_plugin_agent in ['opencontrail', 'opencontrail-ml2'] %}
 [APISERVER]
 api_server_port = {{ opencontrail_api_server_port }}
 {% if enable_haproxy|bool and kolla_enable_tls_external|bool %}
@@ -16,12 +16,20 @@ use_ssl = True
 {% endif %}
 api_server_ip = {{ opencontrail_api_server_ip }}
 {% endif %}
+
+{% if neutron_plugin_agent == 'opencontrail' %}
 multi_tenancy = True
 contrail_extensions = ipam:neutron_plugin_contrail.plugins.opencontrail.contrail_plugin_ipam.NeutronPluginContrailIpam,policy:neutron_plugin_contrail.plugins.opencontrail.contrail_plugin_policy.NeutronPluginContrailPolicy,route-table:neutron_plugin_contrail.plugins.opencontrail.contrail_plugin_vpc.NeutronPluginContrailVpc,contrail:None,service-interface:None,vf-binding:None
 
 [COLLECTOR]
 analytics_api_ip = {{ opencontrail_collector_ip.split(' ')[0] }}
 analytics_api_port = {{ opencontrail_collector_port }}
+{% endif %}
+
+{% if neutron_plugin_agent == 'opencontrail-ml2' %}
+[DM_INTEGRATION]
+enabled = {{ contrail_dm_integration | default(false) | bool }}
+{% endif %}
 
 [keystone_authtoken]
 auth_host = {{ kolla_internal_fqdn }}

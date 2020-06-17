@@ -5,4 +5,8 @@ service_provider = VPN:vmware:vmware_nsx.services.vpnaas.nsxv.ipsec_driver.NSXvI
 {% else %}
 service_provider = VPN:openswan:neutron_vpnaas.services.vpn.service_drivers.ipsec.IPsecVPNDriver:default
 {% endif %}
+{% if neutron_plugin_agent == 'opencontrail-ml2' %}
+service_provider = 'L3_ROUTER_NAT:TF:networking_opencontrail.l3.service_provider.TFL3ServiceProvider'
+{% endif %}
+
 {% endif %}

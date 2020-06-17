@@ -7,6 +7,9 @@ service_provider = LOADBALANCERV2:VMWareEdge:neutron_lbaas.drivers.vmware.edge_d
 {% else %}
 service_provider = LOADBALANCERV2:Haproxy:neutron_lbaas.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver:default
 {% endif %}
+{% if neutron_plugin_agent == 'opencontrail-ml2' %}
+service_provider = 'L3_ROUTER_NAT:TF:networking_opencontrail.l3.service_provider.TFL3ServiceProvider'
+{% endif %}
 
 [service_auth]
 auth_url = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ keystone_public_port }}/v2.0

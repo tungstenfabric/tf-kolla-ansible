@@ -18,5 +18,6 @@
     - "{{ heat_opencontrail_init_image_full }}"
     - "{{ nova_compute_opencontrail_init_image_full }}"
     - "{{ neutron_opencontrail_init_image_full }}"
+    - "{{ neutron_opencontrail_ml2_init_image_full }}"
   when:
     - destroy_include_images | bool
