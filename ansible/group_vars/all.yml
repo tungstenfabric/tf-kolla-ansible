@@ -13,6 +13,7 @@ enable_opencontrail_trunk: no
 # required. By default these are being set to known working container images.
 # These should be overridden in globals.yml
 neutron_opencontrail_init_image_full: "opencontrailnightly/contrail-openstack-neutron-init:queens-master-131"
+neutron_opencontrail_ml2_init_image_full: "opencontrailnightly/contrail-openstack-neutron-ml2-init:queens-master-131"
 nova_compute_opencontrail_init_image_full: "opencontrailnightly/contrail-openstack-compute-init:queens-master-131"
 ironic_notification_manager_image_full: "opencontrailnightly/contrail-openstack-ironic-notification-manager:queens-master-131"
 heat_opencontrail_init_image_full: "opencontrailnightly/contrail-openstack-heat-init:queens-master-131"
