@@ -14,6 +14,8 @@ mechanism_drivers = openvswitch,l2population
 mechanism_drivers = linuxbridge,l2population
 {% elif neutron_plugin_agent == "opendaylight" %}
 mechanism_drivers = {{ opendaylight_mechanism_driver }}
+{% elif neutron_plugin_agent == 'opencontrail-ml2' %}
+mechanism_drivers = opencontrail,openvswitch
 {% endif %}
 
 {% if neutron_extension_drivers %}
