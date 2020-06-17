@@ -4,6 +4,7 @@ enabled = True
 {% if neutron_plugin_agent == 'vmware_nsxv' %}
 driver = vmware_nsxv_edge
 {% else %}
+
 {% if neutron_fwaas_version == 'v1' %}
 agent_version = v1
 driver = iptables
@@ -14,5 +15,14 @@ driver = iptables_v2
 
 [service_providers]
 service_provider = FIREWALL:Iptables:neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver:default
+{% if neutron_plugin_agent == 'opencontrail-ml2' %}
+service_provider = 'L3_ROUTER_NAT:TF:networking_opencontrail.l3.service_provider.TFL3ServiceProvider'
 {% endif %}
+
+{% endif %}
+{% if neutron_plugin_agent == 'opencontrail-ml2' %}
+[service_providers]
+service_provider = 'L3_ROUTER_NAT:TF:networking_opencontrail.l3.service_provider.TFL3ServiceProvider'
+{% endif %}
+
 {% endif %}
