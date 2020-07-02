@@ -9,7 +9,7 @@ neutron_services:
     group: "neutron-server"
     host_in_groups: "{{ inventory_hostname in groups['neutron-server'] }}"
     environment:
-        PYTHONPATH: "{% if neutron_plugin_agent == 'opencontrail' %}/opt/plugin/site-packages{% endif %}"
+        PYTHONPATH: "{% if neutron_plugin_agent in ['opencontrail', 'opencontrail-ml2'] %}/opt/plugin/site-packages{% endif %}"
     volumes:
       - "{{ node_config_directory }}/neutron-server/:{{ container_config_directory }}/:ro"
       - "/etc/localtime:/etc/localtime:ro"

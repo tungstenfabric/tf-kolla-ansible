@@ -15,7 +15,7 @@
   when:
     - neutron_server.enabled | bool
     - neutron_server.host_in_groups | bool
-    - neutron_plugin_agent == 'opencontrail'
+    - neutron_plugin_agent in ['opencontrail', 'opencontrail-ml2']
   notify:
     - "Restart {{ service_name }} container"
 
@@ -53,7 +53,7 @@
     - kolla_enable_tls_external | bool
     - neutron_server.enabled | bool
     - neutron_server.host_in_groups | bool
-    - neutron_plugin_agent == 'opencontrail'
+    - neutron_plugin_agent in ['opencontrail', 'opencontrail-ml2']
   with_items:
     - "haproxy-ca.crt"
   notify:
@@ -73,7 +73,7 @@
     - config_api_ssl_enable | bool
     - neutron_server.enabled | bool
     - neutron_server.host_in_groups | bool
-    - neutron_plugin_agent == 'opencontrail'
+    - neutron_plugin_agent in ['opencontrail', 'opencontrail-ml2']
   notify:
     - "Restart {{ service_name }} container"
 
