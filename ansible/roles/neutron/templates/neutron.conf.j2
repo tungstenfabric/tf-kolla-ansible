@@ -53,7 +53,12 @@ core_plugin = vmware_nsx.plugin.NsxDvsPlugin
 {% elif neutron_plugin_agent == 'opencontrail' %}
 
 core_plugin = neutron_plugin_contrail.plugins.opencontrail.contrail_plugin.NeutronPluginContrailCoreV2
+<<<<<<< HEAD   (fdee30 [Migration] Add content from Juniper)
 service_plugins = {% if openstack_release != 'train' %}neutron_plugin_contrail.plugins.opencontrail.loadbalancer.v2.plugin.LoadBalancerPluginV2,{% endif %}{% if enable_neutron_fwaas | bool %}firewall_v2,{% endif %}{% if enable_opencontrail_trunk | bool %}contrail-trunk,{% endif %}
+=======
+
+service_plugins = neutron_plugin_contrail.plugins.opencontrail.loadbalancer.v2.plugin.LoadBalancerPluginV2{% if enable_neutron_fwaas | bool %},firewall_v2{% endif %}{% if enable_opencontrail_trunk | bool %},contrail-trunk{% endif %}{% if enable_opencontrail_tags | bool %},contrail-tags{% endif %}
+>>>>>>> CHANGE (efc2eb add contrail-tags to neutron plugins)
 
 api_extensions_path = /opt/plugin/site-packages/neutron_plugin_contrail/extensions:/opt/plugin/site-packages/neutron_lbaas/extensions
 
