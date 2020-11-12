@@ -17,7 +17,7 @@
     - not use_preconfigured_databases | bool
 
 - name: Creating Nova databases user and setting permissions
-  become: true
+  become: True
   kolla_toolbox:
     module_name: mysql_user
     module_args:
@@ -42,7 +42,7 @@
   run_once: True
   when:
     - not use_preconfigured_databases | bool
-  no_log: true
+  no_log: True
 
 - import_tasks: config_bootstrap.yml
 
