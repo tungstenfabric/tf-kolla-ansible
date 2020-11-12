@@ -47,6 +47,7 @@
   until:
     - nova_compute_services is success
     - nova_compute_services.stdout | from_json | length != 0
+  no_log: True
 
 - name: Discovering nova hosts
   command: >
