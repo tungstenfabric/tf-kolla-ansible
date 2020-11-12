@@ -58,6 +58,7 @@
     failed_when: "command_result.rc == 1 and 'already exists' not in command_result.stderr"
     run_once: yes
     when: enable_nova | bool
+    no_log: True
 
   - name: Add compute hosts to virtual-hosts Aggregate Group
     command: >
