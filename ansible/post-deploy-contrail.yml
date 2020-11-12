@@ -66,7 +66,7 @@
     register: command_result
     failed_when: "command_result.rc == 1 and 'already exists' not in command_result.stderr"
     run_once: yes
-
+    no_log: True
   - name: Add compute hosts to virtual-hosts Aggregate Group
     command: >
       docker exec kolla_toolbox openstack
