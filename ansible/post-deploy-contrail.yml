@@ -1,6 +1,7 @@
 ---
 - name: Post-deploy playbook for contrail
   hosts: control
+  no_log: True
   tasks:
 
   - name: Creating admin openrc file for kolla-toolbox
