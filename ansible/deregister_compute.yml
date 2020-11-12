@@ -1,6 +1,7 @@
 ---
 - name: Remove nova compute from nova api
   hosts: control
+  no_log: True
   gather_facts: no
   tasks:
   - name: Disable the nova-compute on the openstack container
@@ -56,7 +57,7 @@
     with_dict: "{{ deleted_nodes_dict }}"
     run_once: yes
     register: disabled_nova_services
-
+    
   - name: Remove the disabled services
     command: >
       docker exec kolla_toolbox openstack
