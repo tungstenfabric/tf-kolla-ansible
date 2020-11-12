@@ -44,6 +44,7 @@
   delegate_to: "{{ groups['nova-api'][0] }}"
   retries: 20
   delay: 10
+  no_log: True
   until:
     - nova_compute_services | success
     - nova_compute_services.stdout | from_json | length != 0
