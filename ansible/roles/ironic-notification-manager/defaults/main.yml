@@ -6,6 +6,7 @@
 ironic_notification_manager_log_file: "/var/log/ironic/ironic-notification-manager.log"
 ironic_notification_manager_log_level: "SYS_INFO"
 ironic_notification_manager_introspect_port: "8110"
+ironic_notification_manager_default_volumes: "/var/log/ironic:/var/log/contrail"
 
 ####################
 # OpenStack
