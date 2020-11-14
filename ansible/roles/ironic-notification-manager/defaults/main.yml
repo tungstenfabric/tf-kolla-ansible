@@ -1,9 +1,20 @@
 ---
+project_name: "ironic_notification_manager"
+
+ironic_notification_manager_services:
+  ironic_notification_manager:
+    container_name: ironic_notification_manager
+    group: ironic_notification_manager
+    enabled: true
+    image: "{{ ironic_notification_manager_image_full }}"
+    volumes: "/var/log/contrail/ironic-notification-manager:/var/log/contrail"
+
 ####################
 # Docker
 ####################
 # ironic_notification_manager_image_full: "opencontrailnightly/contrail-openstack-ironic-notification-manager:master-20180131150536-centos7-ocata"
-ironic_notification_manager_log_file: "/var/log/ironic/ironic-notification-manager.log"
+ironic_notification_manager_log_file: "/var/log/contrail/ironic-notification-manager.log"
+ironic_notification_manager_default_volumes: "/var/log/contrail/ironic-notification-manager:/var/log/contrail"
 ironic_notification_manager_log_level: "SYS_INFO"
 ironic_notification_manager_introspect_port: "8110"
 
