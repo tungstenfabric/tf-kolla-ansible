@@ -4,5 +4,6 @@
     action: "pull_image"
     common_options: "{{ docker_common_options }}"
     image: "{{ ironic_notification_manager_image_full }}"
+    volumes: "/var/log/contrail/ironic-notification-manager:/var/log/contrail"
   when: inventory_hostname in groups['ironic-api']
 
