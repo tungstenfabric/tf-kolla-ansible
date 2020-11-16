@@ -3,9 +3,6 @@
 # Docker
 ####################
 # ironic_notification_manager_image_full: "opencontrailnightly/contrail-openstack-ironic-notification-manager:queens-master-131"
-ironic_notification_manager_log_file: "/var/log/ironic/ironic-notification-manager.log"
-ironic_notification_manager_log_level: "SYS_INFO"
-ironic_notification_manager_introspect_port: "8110"
 
 ####################
 # OpenStack
