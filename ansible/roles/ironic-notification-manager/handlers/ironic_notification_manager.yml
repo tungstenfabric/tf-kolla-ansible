@@ -5,7 +5,7 @@
     common_options: "{{ docker_common_options }}"
     name: "ironic_notification_manager"
     image: "{{ ironic_notification_manager_image_full }}"
-    volumes: "/var/log/contrail/"
+    volumes: "/var/log/contrail/ironic-notification-manager:/var/log/contrail"
     environment: "{{ ironic_env | combine(rabbitmq_env) | combine(auth_env) }}"
   when:
     - action != "config"
