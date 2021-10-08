@@ -120,6 +120,8 @@
   get_url:
     url: "{{ ironic_image_url }}/{{ item.value }}"
     dest: "{{ node_config_directory }}/ironic-pxe/{{ item.key }}"
+    # due to changes in Cert issuer "Lets Encrypt"
+    validate_certs: "no"
   with_dict: "{{ ironic_images }}"
   when: 
     # Only required when Ironic inspector is in use.
