@@ -14,6 +14,7 @@
     name: "bootstrap_neutron_opencontrail_plugin"
     restart_policy: "never"
     volumes: "{{ neutron_server.volumes|reject('equalto', '')|list }}"
+    remove_on_exit: False
   when:
     - neutron_plugin_agent == 'opencontrail'
     - neutron_server.enabled | bool

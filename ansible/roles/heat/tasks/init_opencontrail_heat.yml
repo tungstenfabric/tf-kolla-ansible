@@ -14,5 +14,6 @@
     name: "bootstrap_heat_opencontrail_plugin"
     restart_policy: "never"
     volumes: "opt_plugin:/opt/plugin/"
+    remove_on_exit: False
   when:
     - heat_engine_svc.enabled | bool
