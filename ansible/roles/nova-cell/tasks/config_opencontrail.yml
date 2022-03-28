@@ -15,6 +15,7 @@
     name: "bootstrap_nova_compute_opencontrail_plugin"
     restart_policy: no
     volumes: "{{ nova_compute.volumes|reject('equalto', '')|list }}"
+    remove_on_exit: False
   when:
     - neutron_plugin_agent == 'opencontrail'
     - inventory_hostname in groups[nova_cell_compute_group]
