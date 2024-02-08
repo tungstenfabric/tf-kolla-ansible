@@ -75,7 +75,7 @@
     - config_json.changed | bool
       or nova_conf.changed | bool
       or policy_overwriting.changed | bool
-      or placement_api_wsgi_conf | changed
+      or placement_api_wsgi_conf is changed
       or placement_api_container.changed | bool
 
 - name: Restart nova-api container
