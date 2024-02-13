@@ -26,7 +26,7 @@ for ((i=0;i<=2;i++)); do
     else
         truncate -s {{ swift_disk_partition_size }} /var/cache/${disk_array[$i]}
         sudo mkfs.xfs /var/cache/${disk_array[$i]}
-        echo "/var/cache/${disk_array[$i]} {{ swift_devices_mount_point }}/${mnt_array[$i]} xfs loop,noatime,nodiratime,nobarrier,logbufs=8 0 0" >> /etc/fstab
+        echo "/var/cache/${disk_array[$i]} {{ swift_devices_mount_point }}/${mnt_array[$i]} xfs loop,noatime,nodiratime,logbufs=8 0 0" >> /etc/fstab
         mkdir -p {{ swift_devices_mount_point }}/${mnt_array[$i]}
         mount {{ swift_devices_mount_point }}/${mnt_array[$i]}
     fi
