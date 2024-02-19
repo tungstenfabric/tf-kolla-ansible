@@ -491,6 +491,9 @@ class DockerWorker(object):
             'cpuset_cpus': 'CpusetCpus', 'cpuset_mems': 'CpusetMems',
             'kernel_memory': 'KernelMemory', 'blkio_weight': 'BlkioWeight',
             'ulimits': 'Ulimits'}
+        if StrictVersion(self.dc._version) >= StrictVersion('1.42'):
+            dimension_map.pop('kernel_memory', None)
+
         unsupported = set(new_dimensions.keys()) - \
             set(dimension_map.keys())
         if unsupported:
