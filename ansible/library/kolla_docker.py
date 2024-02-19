@@ -29,6 +29,8 @@ import docker
 
 from ansible.module_utils.basic import AnsibleModule
 
+from distutils.version import StrictVersion
+
 DOCUMENTATION = '''
 ---
 module: kolla_docker
